@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.ui.Alignment
@@ -15,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.Composable
 import com.example.gameapp.ui.theme.GameAppTheme
+import android.content.Intent
+import androidx.compose.runtime.LaunchedEffect
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +34,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
-    // Column to stack content vertically
+    val context = LocalContext.current
+
+    // Body of the screen
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -41,7 +48,6 @@ fun MainScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // App title
         Text(
             text = "Game App",
             fontSize = 30.sp,
@@ -49,32 +55,38 @@ fun MainScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(bottom = 32.dp)
         )
 
-        // Play solo button
         Button(
-            onClick = { /* TODO: Handle solo play action */ },
+            onClick = {
+                // Navigating to GameListActivity when clicking "Jouer en solo"
+                val intent = Intent(context, GameListActivity::class.java)
+                context.startActivity(intent)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(60.dp),
             shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF6200EE), // Purple color
+                containerColor = Color(0xFF6200EE),
                 contentColor = Color.White
             )
         ) {
             Text(text = "Jouer en solo", fontSize = 20.sp)
         }
 
-        Spacer(modifier = Modifier.height(16.dp)) // Add some spacing between buttons
+        Spacer(modifier = Modifier.height(16.dp))
 
-        // Play via Bluetooth button
         Button(
-            onClick = { /* TODO: Handle Bluetooth play action */ },
+            onClick = {
+                // Navigating to GameListActivity when clicking "Jouer en solo"
+                val intent = Intent(context, GameListActivity::class.java)
+                context.startActivity(intent)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(60.dp),
             shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF03DAC5), // Teal color
+                containerColor = Color(0xFF03DAC5),
                 contentColor = Color.White
             )
         ) {
