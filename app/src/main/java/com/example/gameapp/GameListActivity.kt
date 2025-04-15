@@ -22,6 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.core.content.ContextCompat.startActivity
 import android.content.Intent
+import androidx.compose.ui.platform.LocalContext
+import com.example.gameapp.NopeQuiz.QuizActivity
 
 class GameListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +44,7 @@ data class GameItem(val title: String, val imageResId: Int)
 fun GameListScreen() {
     val games = listOf(
         GameItem("Shake Challenge", R.drawable.jeu),
-        GameItem("Nope Quiz", R.drawable.jeu),
+        GameItem("Breizh Quiz", R.drawable.breizh),
         GameItem("Swipe Duel", R.drawable.jeu),
         GameItem("Balance Game", R.drawable.jeu),
         GameItem("Tap Race", R.drawable.jeu),
@@ -63,12 +65,17 @@ fun GameListScreen() {
 
 @Composable
 fun GameCard(game: GameItem) {
+    val context = LocalContext.current
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(180.dp)
             .clickable {
-                // ici tu peux faire : val intent = Intent(...) startActivity(...)
+                if (game.title == "Breizh Quiz") {
+                    val intent = Intent(context, QuizActivity::class.java)
+                    context.startActivity(intent)
+                }
             },
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
@@ -82,7 +89,7 @@ fun GameCard(game: GameItem) {
             )
             Text(
                 text = game.title,
-                color = Color.Black,
+                color = if (game.title == "Breizh Quiz") Color(0xFFFF0000) else Color.Black,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
