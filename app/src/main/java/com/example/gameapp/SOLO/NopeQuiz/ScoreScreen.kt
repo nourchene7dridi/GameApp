@@ -1,4 +1,4 @@
-package com.example.gameapp.NopeQuiz
+package com.example.gameapp.SOLO.NopeQuiz
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

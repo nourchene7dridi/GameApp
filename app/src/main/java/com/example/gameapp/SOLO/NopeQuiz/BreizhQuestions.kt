@@ -1,4 +1,4 @@
-package com.example.gameapp.NopeQuiz
+package com.example.gameapp.SOLO.NopeQuiz
 
 class BreizhQuestions {
     val breizhQuestions = listOf(

@@ -1,4 +1,4 @@
-package com.example.gameapp.NopeQuiz
+package com.example.gameapp.SOLO.NopeQuiz
 
 
 data class Question(

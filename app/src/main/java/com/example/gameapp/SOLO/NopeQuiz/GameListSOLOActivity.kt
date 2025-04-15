@@ -1,4 +1,4 @@
-package com.example.gameapp
+package com.example.gameapp.SOLO.NopeQuiz
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,10 +20,9 @@ import androidx.compose.ui.unit.sp
 import com.example.gameapp.ui.theme.GameAppTheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.core.content.ContextCompat.startActivity
 import android.content.Intent
 import androidx.compose.ui.platform.LocalContext
-import com.example.gameapp.NopeQuiz.QuizActivity
+import com.example.gameapp.R
 
 class GameListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

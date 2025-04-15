@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.Composable
 import com.example.gameapp.ui.theme.GameAppTheme
 import android.content.Intent
-import androidx.compose.runtime.LaunchedEffect
+import com.example.gameapp.SOLO.NopeQuiz.GameListActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +40,6 @@ class MainActivity : ComponentActivity() {
 fun MainScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
 
-    // Body of the screen
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -57,8 +56,9 @@ fun MainScreen(modifier: Modifier = Modifier) {
 
         Button(
             onClick = {
-                // Navigating to GameListActivity when clicking "Jouer en solo"
-                val intent = Intent(context, GameListActivity::class.java)
+                val intent = Intent(context, GameListActivity::class.java).apply {
+                    putExtra("GAME_MODE", "SOLO")  // Ajouter un extra pour le mode
+                }
                 context.startActivity(intent)
             },
             modifier = Modifier
@@ -77,8 +77,9 @@ fun MainScreen(modifier: Modifier = Modifier) {
 
         Button(
             onClick = {
-                // Navigating to GameListActivity when clicking "Jouer en solo"
-                val intent = Intent(context, GameListActivity::class.java)
+                val intent = Intent(context, GameListActivity::class.java).apply {
+                    putExtra("GAME_MODE", "BLUETOOTH")  // Ajouter un extra pour le mode
+                }
                 context.startActivity(intent)
             },
             modifier = Modifier

@@ -13,13 +13,13 @@
         android:theme="@style/Theme.GameApp"
         tools:targetApi="31">
         <activity
-            android:name=".NopeQuiz.QuizActivity"
+            android:name=".SOLO.NopeQuiz.QuizActivity"
             android:exported="false" />
         <activity
-            android:name=".GameListActivity"
+            android:name=".SOLO.NopeQuiz.GameListActivity"
             android:exported="true" />
         <activity
-            android:name=".NopeQuiz.QuizActivity"
+            android:name=".SOLO.NopeQuiz.QuizActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
