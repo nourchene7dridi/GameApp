@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.Composable
 import com.example.gameapp.ui.theme.GameAppTheme
 import android.content.Intent
-import com.example.gameapp.SOLO.NopeQuiz.GameListActivity
+import com.example.gameapp.SOLO.GameListActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,7 +1,6 @@
-package com.example.gameapp.SOLO.NopeQuiz
+package com.example.gameapp.SOLO.BreishQuiz
 
 import android.media.MediaPlayer
-import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*

@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.NopeQuiz
+package com.example.gameapp.SOLO.BreishQuiz
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import com.example.gameapp.SOLO.GameListActivity
 import com.example.gameapp.ui.theme.GameAppTheme
 
 class QuizActivity : ComponentActivity() {
