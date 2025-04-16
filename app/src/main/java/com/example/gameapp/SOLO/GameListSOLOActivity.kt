@@ -24,6 +24,8 @@ import android.content.Intent
 import androidx.compose.ui.platform.LocalContext
 import com.example.gameapp.R
 import com.example.gameapp.SOLO.BreishQuiz.QuizActivity
+import com.example.gameapp.SOLO.CatchMe.CatchMeGame
+
 
 class GameListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +45,7 @@ data class GameItem(val title: String, val imageResId: Int)
 @Composable
 fun GameListScreen() {
     val games = listOf(
-        GameItem("Shake Challenge", R.drawable.jeu),
+        GameItem("Catch Me (if you can)", R.drawable.jeu),
         GameItem("Breizh Quiz", R.drawable.breizh),
         GameItem("Swipe Duel", R.drawable.jeu),
         GameItem("Balance Game", R.drawable.jeu),
@@ -74,6 +76,10 @@ fun GameCard(game: GameItem) {
             .clickable {
                 if (game.title == "Breizh Quiz") {
                     val intent = Intent(context, QuizActivity::class.java)
+                    context.startActivity(intent)
+                }
+                if (game.title == "Catch Me (if you can)") {
+                    val intent = Intent(context, CatchMeGame::class.java)
                     context.startActivity(intent)
                 }
             },
