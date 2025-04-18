@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -53,6 +52,16 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    // Vibration support
+    implementation("androidx.core:core-ktx:1.10.1")
+
+    // MediaPlayer for sound effects
+    implementation("androidx.media:media:1.6.0")
+
+
+    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha10")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

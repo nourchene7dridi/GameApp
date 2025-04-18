@@ -10,6 +10,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import com.example.gameapp.SOLO.GameListActivity
 import com.example.gameapp.ui.theme.GameAppTheme
+import com.example.gameapp.SOLO.BreishQuiz.QuizScreen
+
 
 class QuizActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
