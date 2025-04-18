@@ -2,9 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< HEAD
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
+=======
+    <uses-permission android:name="android.permission.VIBRATE"/>
+>>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
 
     <application
         android:allowBackup="true"
@@ -17,10 +21,20 @@
         android:theme="@style/Theme.GameApp"
         tools:targetApi="31">
 
+<<<<<<< HEAD
+=======
+        <activity
+            android:name=".SOLO.BreishQuiz.QuizActivity"
+            android:exported="false" />
+>>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
+        <activity
+            android:name=".SOLO.CatchMe.CatchMeGame"
+            android:exported="false" />
         <activity
             android:name=".SOLO.GameListActivity"
             android:exported="true" />
 
+<<<<<<< HEAD
 
         <activity
             android:name=".SOLO.BreishQuiz.QuizActivity"
@@ -30,6 +44,8 @@
             android:name=".SOLO.Pong.PongGameActivity"
             android:exported="true" />
 
+=======
+>>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
         <activity
             android:name=".MainActivity"
             android:exported="true"
