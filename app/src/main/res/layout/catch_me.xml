@@ -1,33 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#F5F5F5">
+    android:layout_height="match_parent">
 
+    <!-- Fond d'écran : salle de classe -->
+    <ImageView
+        android:id="@+id/classroomBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/classroom" />
+
+    <!-- Effets de vibration (cachés par défaut) -->
+    <ImageView
+        android:id="@+id/vibration1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:visibility="gone"
+        android:src="@drawable/vibration1" />
+
+    <ImageView
+        android:id="@+id/vibration2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="40dp"
+        android:visibility="gone"
+        android:src="@drawable/vibration2" />
+
+    <ImageView
+        android:id="@+id/vibration3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="200dp"
+        android:visibility="gone"
+        android:src="@drawable/vibration3" />
+
+    <ImageView
+        android:id="@+id/vibration4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="200dp"
+        android:visibility="gone"
+        android:src="@drawable/vibration4" />
+
+    <!-- Texte du haut -->
     <TextView
         android:id="@+id/statusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"/>
+        android:textColor="#000000"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="16dp" />
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!-- Boutons transparents sur les élèves -->
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Élève en haut à gauche lisant un livre" />
 
-        <Button android:id="@+id/button1" android:text="Objet 1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <Button android:id="@+id/button2" android:text="Objet 2" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <Button android:id="@+id/button3" android:text="Objet 3" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <Button android:id="@+id/button4" android:text="Objet 4" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <Button android:id="@+id/playButton" android:text="Jouer !" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp"/>
-    </LinearLayout>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Élève en haut à droite concentré sur son cahier" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="200dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Élève en bas à gauche levant la main" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="200dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Élève en bas à droite qui réfléchit" />
+
+    <!-- Bouton Jouer -->
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jouer !"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="32dp" />
+</FrameLayout>

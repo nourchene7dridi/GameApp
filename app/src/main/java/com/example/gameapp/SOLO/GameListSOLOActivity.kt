@@ -45,7 +45,7 @@ data class GameItem(val title: String, val imageResId: Int)
 @Composable
 fun GameListScreen() {
     val games = listOf(
-        GameItem("Catch Me (if you can)", R.drawable.jeu),
+        GameItem("Catch Me (if you can)", R.drawable.classroom),
         GameItem("Breizh Quiz", R.drawable.breizh),
         GameItem("Swipe Duel", R.drawable.jeu),
         GameItem("Balance Game", R.drawable.jeu),
