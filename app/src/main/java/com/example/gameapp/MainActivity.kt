@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import com.example.gameapp.ui.theme.GameAppTheme
 import android.content.Intent
 import com.example.gameapp.SOLO.GameListActivity
+import com.example.gameapp.MULTIPLAYER.GameListActivity2
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,7 +78,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
 
         Button(
             onClick = {
-                val intent = Intent(context, GameListActivity::class.java).apply {
+                val intent = Intent(context, GameListActivity2::class.java).apply {
                     putExtra("GAME_MODE", "BLUETOOTH")  // Ajouter un extra pour le mode
                 }
                 context.startActivity(intent)

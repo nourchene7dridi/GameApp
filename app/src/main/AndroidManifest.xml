@@ -38,6 +38,16 @@
             android:name=".SOLO.Pong.PongGameActivity"
             android:exported="true" />
 
+
+
+        <activity
+            android:name=".MULTIPLAYER.GameListActivity2"
+            android:exported="true" />
+
+        <activity
+            android:name=".MULTIPLAYER.ShakeIt.ShakeItGame"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
