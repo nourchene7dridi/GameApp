@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.gameapp.R
 import com.example.gameapp.SOLO.BreishQuiz.QuizActivity
 import com.example.gameapp.SOLO.CatchMe.CatchMeGame
+import com.example.gameapp.SOLO.ShakeIt.ShakeItGame
 
 
 class GameListActivity : ComponentActivity() {
@@ -47,7 +48,7 @@ fun GameListScreen() {
     val games = listOf(
         GameItem("Catch Me (if you can)", R.drawable.classroom),
         GameItem("Breizh Quiz", R.drawable.breizh),
-        GameItem("Swipe Duel", R.drawable.jeu),
+        GameItem("Shake it", R.drawable.jeu),
         GameItem("Balance Game", R.drawable.jeu),
         GameItem("Tap Race", R.drawable.jeu),
         GameItem("Reflex Master", R.drawable.jeu)
@@ -80,6 +81,10 @@ fun GameCard(game: GameItem) {
                 }
                 if (game.title == "Catch Me (if you can)") {
                     val intent = Intent(context, CatchMeGame::class.java)
+                    context.startActivity(intent)
+                }
+                if (game.title == "Shake It") {
+                    val intent = Intent(context, ShakeItGame::class.java)
                     context.startActivity(intent)
                 }
             },

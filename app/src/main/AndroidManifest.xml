@@ -22,6 +22,9 @@
             android:name=".SOLO.CatchMe.CatchMeGame"
             android:exported="false" />
         <activity
+            android:name=".SOLO.ShakeIt.ShakeItGame"
+            android:exported="false" />
+        <activity
             android:name=".SOLO.GameListActivity"
             android:exported="true" />
 
