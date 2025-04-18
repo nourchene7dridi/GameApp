@@ -25,7 +25,6 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.gameapp.R
 import com.example.gameapp.SOLO.BreishQuiz.QuizActivity
 import com.example.gameapp.SOLO.CatchMe.CatchMeGame
-import com.example.gameapp.SOLO.ShakeIt.ShakeItGame
 
 
 class GameListActivity : ComponentActivity() {
@@ -46,9 +45,13 @@ data class GameItem(val title: String, val imageResId: Int)
 @Composable
 fun GameListScreen() {
     val games = listOf(
+<<<<<<< HEAD
+        GameItem("3 Défis aléatoires", R.drawable.jeu),
+=======
         GameItem("Catch Me (if you can)", R.drawable.classroom),
+>>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
         GameItem("Breizh Quiz", R.drawable.breizh),
-        GameItem("Shake it", R.drawable.jeu),
+        GameItem("Solo Pong", R.drawable.ping_solo),
         GameItem("Balance Game", R.drawable.jeu),
         GameItem("Tap Race", R.drawable.jeu),
         GameItem("Reflex Master", R.drawable.jeu)
@@ -70,6 +73,7 @@ fun GameListScreen() {
 fun GameCard(game: GameItem) {
     val context = LocalContext.current
 
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -79,12 +83,14 @@ fun GameCard(game: GameItem) {
                     val intent = Intent(context, QuizActivity::class.java)
                     context.startActivity(intent)
                 }
+<<<<<<< HEAD
+
+                if (game.title == "Solo Pong") {
+                    val intent = Intent(context, com.example.gameapp.SOLO.Pong.PongGameActivity::class.java)
+=======
                 if (game.title == "Catch Me (if you can)") {
                     val intent = Intent(context, CatchMeGame::class.java)
-                    context.startActivity(intent)
-                }
-                if (game.title == "Shake It") {
-                    val intent = Intent(context, ShakeItGame::class.java)
+>>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
                     context.startActivity(intent)
                 }
             },
@@ -100,7 +106,11 @@ fun GameCard(game: GameItem) {
             )
             Text(
                 text = game.title,
-                color = if (game.title == "Breizh Quiz") Color(0xFFFF0000) else Color.Black,
+                color = when (game.title) {
+                    "Breizh Quiz" -> Color.Red
+                    "Solo Pong" -> Color.White
+                    else -> Color.Gray
+                },
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
