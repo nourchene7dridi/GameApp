@@ -26,6 +26,7 @@ import com.example.gameapp.R
 import com.example.gameapp.SOLO.BoatGame.BoatGameActivity
 import com.example.gameapp.SOLO.BreishQuiz.QuizActivity
 import com.example.gameapp.SOLO.CatchMe.CatchMeGame
+import com.example.gameapp.SOLO.LogoQuiz.LogoQuizActivity
 import com.example.gameapp.SOLO.ShakeIt.ShakeItGame
 
 
@@ -53,7 +54,7 @@ fun GameListScreen() {
         GameItem("Solo Pong", R.drawable.ping_solo),
         GameItem("Shake it", R.drawable.shaker1),
         GameItem("Boat Game", R.drawable.riviere),
-        GameItem("Reflex Master", R.drawable.jeu)
+        GameItem("Logo Quiz", R.drawable.logo)
     )
 
     LazyColumn(
@@ -100,6 +101,11 @@ fun GameCard(game: GameItem) {
                     context.startActivity(intent)
                 }
 
+                if (game.title == "Logo Quiz") {
+                    val intent = Intent(context, LogoQuizActivity::class.java)
+                    context.startActivity(intent)
+                }
+
             },
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
@@ -115,11 +121,11 @@ fun GameCard(game: GameItem) {
                 text = game.title,
                 color = when (game.title) {
                     "Breizh Quiz" -> Color.Red
-                    "Solo Pong" -> Color.White
+                    "Solo Pong" -> Color.Yellow
                     "Catch Me (if you can)" -> Color.Blue
                     "Shake it" -> Color.Red
                     "Boat Game" -> Color.Blue
-                    else -> Color.Gray
+                    else -> Color.Black
                 },
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,

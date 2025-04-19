@@ -40,15 +40,9 @@
             android:theme="@style/Theme.AppCompat.Light">
         </activity>
 
-
-
-
-
         <activity
             android:name=".SOLO.Pong.PongGameActivity"
             android:exported="true" />
-
-
 
         <activity
             android:name=".MULTIPLAYER.GameListActivity2"
@@ -57,6 +51,11 @@
         <activity
             android:name=".MULTIPLAYER.ShakeIt.ShakeItGame"
             android:exported="false" />
+
+        <activity android:name=".SOLO.LogoQuiz.LogoQuizActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".SOLO.LogoQuiz.LogoQuizScoreActivity" />
+
 
         <activity
             android:name=".MainActivity"
