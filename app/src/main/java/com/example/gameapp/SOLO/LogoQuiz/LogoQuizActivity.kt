@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gameapp.R
+import android.content.Intent
 
 class LogoQuizActivity : AppCompatActivity() {
 
@@ -19,10 +20,10 @@ class LogoQuizActivity : AppCompatActivity() {
 
     // Liste des logos et des réponses attendues
     private val logos = listOf(
-        Pair(R.drawable.logo1, "shell"),
-        Pair(R.drawable.logo2, "nissan"),
-        Pair(R.drawable.logo3, "paypal"),
-        Pair(R.drawable.logo4, "la coste")
+        Pair(R.drawable.logo1, "Shell"),
+        Pair(R.drawable.logo2, "Nissan"),
+        Pair(R.drawable.logo3, "Paypal"),
+        Pair(R.drawable.logo4, "La Coste")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,8 +62,12 @@ class LogoQuizActivity : AppCompatActivity() {
                 answerInput.setText("")
                 logoImageView.postDelayed({ showNextLogo(); feedbackText.text = "" }, 1500)
             } else {
-                submitButton.isEnabled = false
-                feedbackText.text = "Fin du jeu ! Score final : $score/${logos.size}"
+                val intent = Intent(this, LogoQuizScoreActivity::class.java)
+                intent.putExtra("FINAL_SCORE", score)
+                intent.putExtra("TOTAL_SCORE", logos.size)
+                startActivity(intent)
+                finish()
+
             }
         }
     }
