@@ -2,31 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-<<<<<<< HEAD
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
-=======
-    <uses-permission android:name="android.permission.VIBRATE"/>
->>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:fullBackupContent="@xml/backup_rules"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameApp"
         tools:targetApi="31">
 
-<<<<<<< HEAD
-=======
+
         <activity
             android:name=".SOLO.BreishQuiz.QuizActivity"
             android:exported="false" />
->>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
+
         <activity
             android:name=".SOLO.CatchMe.CatchMeGame"
             android:exported="false" />
@@ -37,18 +32,21 @@
             android:name=".SOLO.GameListActivity"
             android:exported="true" />
 
-<<<<<<< HEAD
+
 
         <activity
-            android:name=".SOLO.BreishQuiz.QuizActivity"
-            android:exported="false" />
+            android:name=".SOLO.BoatGame.BoatGameActivity"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
+
+
+
+
 
         <activity
             android:name=".SOLO.Pong.PongGameActivity"
             android:exported="true" />
 
-=======
->>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
         <activity
             android:name=".MainActivity"
             android:exported="true"

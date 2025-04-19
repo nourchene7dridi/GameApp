@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import android.content.Intent
 import androidx.compose.ui.platform.LocalContext
 import com.example.gameapp.R
+import com.example.gameapp.SOLO.BoatGame.BoatGameActivity
 import com.example.gameapp.SOLO.BreishQuiz.QuizActivity
 import com.example.gameapp.SOLO.CatchMe.CatchMeGame
 
@@ -45,15 +46,13 @@ data class GameItem(val title: String, val imageResId: Int)
 @Composable
 fun GameListScreen() {
     val games = listOf(
-<<<<<<< HEAD
+
         GameItem("3 Défis aléatoires", R.drawable.jeu),
-=======
-        GameItem("Catch Me (if you can)", R.drawable.classroom),
->>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
         GameItem("Breizh Quiz", R.drawable.breizh),
+        GameItem("Catch Me (if you can)", R.drawable.classroom),
         GameItem("Solo Pong", R.drawable.ping_solo),
-        GameItem("Balance Game", R.drawable.jeu),
-        GameItem("Tap Race", R.drawable.jeu),
+        GameItem("Shake it", R.drawable.jeu),
+        GameItem("Boat Game", R.drawable.riviere),
         GameItem("Reflex Master", R.drawable.jeu)
     )
 
@@ -83,16 +82,23 @@ fun GameCard(game: GameItem) {
                     val intent = Intent(context, QuizActivity::class.java)
                     context.startActivity(intent)
                 }
-<<<<<<< HEAD
+
 
                 if (game.title == "Solo Pong") {
                     val intent = Intent(context, com.example.gameapp.SOLO.Pong.PongGameActivity::class.java)
-=======
+                }
+
                 if (game.title == "Catch Me (if you can)") {
                     val intent = Intent(context, CatchMeGame::class.java)
->>>>>>> d5127199608ca5417df7a695e90ce660c63b8fbf
+
                     context.startActivity(intent)
                 }
+
+                if (game.title == "Boat Game") {
+                    val intent = Intent(context, BoatGameActivity::class.java)
+                    context.startActivity(intent)
+                }
+
             },
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
@@ -108,8 +114,10 @@ fun GameCard(game: GameItem) {
                 text = game.title,
                 color = when (game.title) {
                     "Breizh Quiz" -> Color.Red
-                    "Solo Pong" -> Color.White
-                    else -> Color.Gray
+                    "Solo Pong" -> Color.Yellow
+                    "Catch Me (if you can)" -> Color.Blue
+                    "Boat Game" -> Color.Blue
+                    else -> Color.Black
                 },
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
@@ -121,3 +129,4 @@ fun GameCard(game: GameItem) {
         }
     }
 }
+
