@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.ShakeIt
+package com.example.gameapp.MULTIPLAYER.ShakeIt
 
 import android.content.Context
 import android.hardware.Sensor

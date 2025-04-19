@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 
 
     <application
@@ -32,8 +35,6 @@
             android:name=".SOLO.GameListActivity"
             android:exported="true" />
 
-
-
         <activity
             android:name=".SOLO.BoatGame.BoatGameActivity"
             android:theme="@style/Theme.AppCompat.Light">
@@ -46,6 +47,16 @@
         <activity
             android:name=".SOLO.Pong.PongGameActivity"
             android:exported="true" />
+
+
+
+        <activity
+            android:name=".MULTIPLAYER.GameListActivity2"
+            android:exported="true" />
+
+        <activity
+            android:name=".MULTIPLAYER.ShakeIt.ShakeItGame"
+            android:exported="false" />
 
         <activity
             android:name=".MainActivity"
