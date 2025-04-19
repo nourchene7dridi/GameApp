@@ -42,7 +42,10 @@ class LogoQuizActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
             val userAnswer = answerInput.text.toString().trim().lowercase()
-            val correctAnswer = logos[currentLogoIndex].second
+            val correctAnswer = logos[currentLogoIndex].second.lowercase()
+
+            // Désactiver le champ après soumission
+            answerInput.isEnabled = false
 
             if (userAnswer == correctAnswer) {
                 score++
@@ -54,22 +57,25 @@ class LogoQuizActivity : AppCompatActivity() {
             }
 
             scoreText.text = "Score : $score"
-
-            // Passe au logo suivant après un petit délai
             currentLogoIndex++
 
             if (currentLogoIndex < logos.size) {
-                answerInput.setText("")
-                logoImageView.postDelayed({ showNextLogo(); feedbackText.text = "" }, 1500)
+                logoImageView.postDelayed({
+                    showNextLogo()
+                    feedbackText.text = ""
+                    answerInput.setText("")
+                    answerInput.isEnabled = true // ✅ Réactiver ici
+                }, 1500)
             } else {
                 val intent = Intent(this, LogoQuizScoreActivity::class.java)
                 intent.putExtra("FINAL_SCORE", score)
                 intent.putExtra("TOTAL_SCORE", logos.size)
                 startActivity(intent)
                 finish()
-
             }
         }
+
+
     }
 
     private fun showNextLogo() {
