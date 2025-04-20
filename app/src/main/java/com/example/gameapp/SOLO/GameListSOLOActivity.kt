@@ -26,6 +26,7 @@ import com.example.gameapp.R
 import com.example.gameapp.SOLO.BoatGame.BoatGameActivity
 import com.example.gameapp.SOLO.BreishQuiz.QuizActivity
 import com.example.gameapp.SOLO.CatchMe.CatchMeGame
+import com.example.gameapp.SOLO.DefisAleatoires.TroisDefisAleatoiresActivity
 import com.example.gameapp.SOLO.LogoQuiz.LogoQuizActivity
 import com.example.gameapp.SOLO.ShakeIt.ShakeItGame
 
@@ -79,6 +80,11 @@ fun GameCard(game: GameItem) {
             .fillMaxWidth()
             .height(180.dp)
             .clickable {
+                if (game.title == "3 Défis aléatoires") {
+                    val intent = Intent(context, TroisDefisAleatoiresActivity::class.java)
+                    context.startActivity(intent)
+                }
+
                 if (game.title == "Breizh Quiz") {
                     val intent = Intent(context, QuizActivity::class.java)
                     context.startActivity(intent)

@@ -7,8 +7,6 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.os.CountDownTimer
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,7 +17,9 @@ import kotlin.math.sqrt
 
 class ShakeItGame : ComponentActivity(), SensorEventListener {
 
-    private lateinit var mediaPlayer: MediaPlayer
+    private var mediaPlayerShaker: MediaPlayer? = null
+    private var mediaPlayerDing: MediaPlayer? = null
+
     private lateinit var sensorManager: SensorManager
     private var accelerometer: Sensor? = null
     private var shakeScore = 0
@@ -46,12 +46,12 @@ class ShakeItGame : ComponentActivity(), SensorEventListener {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
-        // Son de 7 sec uniquement donc faudra le rejouer
-        mediaPlayer = MediaPlayer.create(this, R.raw.effet_shaker)
-        mediaPlayer.isLooping = true
-        mediaPlayer.start()
+        // Préparer et jouer le son du shaker en boucle
+        mediaPlayerShaker = MediaPlayer.create(this, R.raw.effet_shaker)
+        mediaPlayerShaker?.isLooping = true
+        mediaPlayerShaker?.start()
 
-        // Timer de fin de jeu
+        // Timer de jeu
         object : CountDownTimer(10000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsLeft = millisUntilFinished / 1000
@@ -63,14 +63,22 @@ class ShakeItGame : ComponentActivity(), SensorEventListener {
                 timerText.text = "Temps : 0"
                 shakeText.text = "Score final : $shakeScore"
 
-                // Arrêter l'animation du gif ou le rendre statique
+                // Arrêter et libérer le son shaker
+                mediaPlayerShaker?.stop()
+                mediaPlayerShaker?.release()
+                mediaPlayerShaker = null
+
+                // Stopper l'animation du gif
                 Glide.with(this@ShakeItGame).clear(shakeGif)
                 shakeGif.setImageResource(R.drawable.shaker)
 
-                // Stopper le son
-                if (mediaPlayer.isPlaying) {
-                    mediaPlayer.stop()
-                    mediaPlayer.release()
+                // Jouer le son de fin
+                mediaPlayerDing = MediaPlayer.create(this@ShakeItGame, R.raw.fin)
+                mediaPlayerDing?.start()
+
+                mediaPlayerDing?.setOnCompletionListener {
+                    mediaPlayerDing?.release()
+                    mediaPlayerDing = null
                 }
             }
         }.start()
@@ -87,11 +95,18 @@ class ShakeItGame : ComponentActivity(), SensorEventListener {
         super.onPause()
         sensorManager.unregisterListener(this)
 
-        // Arrêt et libération du MediaPlayer si encore actif
-        if (::mediaPlayer.isInitialized && mediaPlayer.isPlaying) {
-            mediaPlayer.stop()
-            mediaPlayer.release()
+        // Libérer correctement les MediaPlayers s'ils sont encore actifs
+        mediaPlayerShaker?.let {
+            if (it.isPlaying) it.stop()
+            it.release()
         }
+        mediaPlayerShaker = null
+
+        mediaPlayerDing?.let {
+            if (it.isPlaying) it.stop()
+            it.release()
+        }
+        mediaPlayerDing = null
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
@@ -103,7 +118,7 @@ class ShakeItGame : ComponentActivity(), SensorEventListener {
 
         val acceleration = sqrt(x * x + y * y + z * z) - SensorManager.GRAVITY_EARTH
 
-        if (acceleration > 5) {
+        if (acceleration > 5) { // seuil plus réaliste
             val currentTime = System.currentTimeMillis()
             if (currentTime - lastShakeTime > cooldown) {
                 lastShakeTime = currentTime

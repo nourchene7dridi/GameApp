@@ -52,6 +52,8 @@
             android:name=".MULTIPLAYER.ShakeIt.ShakeItGame"
             android:exported="false" />
 
+        <activity android:name=".SOLO.DefisAleatoires.TroisDefisAleatoiresActivity" />
+
         <activity android:name=".SOLO.LogoQuiz.LogoQuizActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".SOLO.LogoQuiz.LogoQuizScoreActivity" />
