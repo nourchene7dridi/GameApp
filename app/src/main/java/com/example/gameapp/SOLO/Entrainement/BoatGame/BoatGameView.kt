@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.BoatGame
+package com.example.gameapp.SOLO.Entrainement.BoatGame
 
 import android.content.Context
 import android.graphics.*

@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.Pong
+package com.example.gameapp.SOLO.Entrainement.Pong
 
 import android.content.Context
 import android.media.MediaPlayer

@@ -22,26 +22,26 @@
 
 
         <activity
-            android:name=".SOLO.BreishQuiz.QuizActivity"
+            android:name=".SOLO.Entrainement.BreishQuiz.QuizActivity"
             android:exported="false" />
 
         <activity
-            android:name=".SOLO.CatchMe.CatchMeGame"
+            android:name=".SOLO.Entrainement.CatchMe.CatchMeGame"
             android:exported="false" />
         <activity
-            android:name=".SOLO.ShakeIt.ShakeItGame"
+            android:name=".SOLO.Entrainement.ShakeIt.ShakeItGame"
             android:exported="false" />
         <activity
             android:name=".SOLO.GameListActivity"
             android:exported="true" />
 
         <activity
-            android:name=".SOLO.BoatGame.BoatGameActivity"
+            android:name=".SOLO.Entrainement.BoatGame.BoatGameActivity"
             android:theme="@style/Theme.AppCompat.Light">
         </activity>
 
         <activity
-            android:name=".SOLO.Pong.PongGameActivity"
+            android:name=".SOLO.Entrainement.Pong.PongGameActivity"
             android:exported="true" />
 
         <activity
@@ -54,9 +54,11 @@
 
         <activity android:name=".SOLO.DefisAleatoires.TroisDefisAleatoiresActivity" />
 
-        <activity android:name=".SOLO.LogoQuiz.LogoQuizActivity"
+        <activity android:name=".SOLO.Entrainement.GamesSoloActivity" />
+
+        <activity android:name=".SOLO.Entrainement.LogoQuiz.LogoQuizActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".SOLO.LogoQuiz.LogoQuizScoreActivity" />
+        <activity android:name=".SOLO.Entrainement.LogoQuiz.LogoQuizScoreActivity" />
 
 
         <activity

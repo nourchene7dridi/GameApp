@@ -1,4 +1,4 @@
-package com.example.gameapp.MULTIPLAYER
+package com.example.gameapp.SOLO.Entrainement
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,13 +23,16 @@ import androidx.compose.ui.text.style.TextAlign
 import android.content.Intent
 import androidx.compose.ui.platform.LocalContext
 import com.example.gameapp.R
+import com.example.gameapp.SOLO.Entrainement.BoatGame.BoatGameActivity
 import com.example.gameapp.SOLO.Entrainement.BreishQuiz.QuizActivity
 import com.example.gameapp.SOLO.Entrainement.CatchMe.CatchMeGame
-import com.example.gameapp.MULTIPLAYER.ShakeIt.ShakeItGame
+import com.example.gameapp.SOLO.DefisAleatoires.TroisDefisAleatoiresActivity
+import com.example.gameapp.SOLO.Entrainement.LogoQuiz.LogoQuizActivity
 import com.example.gameapp.SOLO.Entrainement.Pong.PongGameActivity
+import com.example.gameapp.SOLO.Entrainement.ShakeIt.ShakeItGame
 
 
-class GameListActivity2 : ComponentActivity() {
+class GamesSoloActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -47,13 +50,12 @@ data class GameItem(val title: String, val imageResId: Int)
 @Composable
 fun GameListScreen() {
     val games = listOf(
-        GameItem("3 Défis aléatoires", R.drawable.jeu),
         GameItem("Catch Me (if you can)", R.drawable.classroom),
         GameItem("Breizh Quiz", R.drawable.breizh),
         GameItem("Solo Pong", R.drawable.ping_solo),
-        GameItem("Shake It", R.drawable.shaker1),
-        GameItem("Tap Race", R.drawable.jeu),
-        GameItem("Reflex Master", R.drawable.jeu)
+        GameItem("Shake it", R.drawable.shaker1),
+        GameItem("Boat Game", R.drawable.riviere),
+        GameItem("Logo Quiz", R.drawable.logo)
     )
 
     LazyColumn(
@@ -78,6 +80,7 @@ fun GameCard(game: GameItem) {
             .fillMaxWidth()
             .height(180.dp)
             .clickable {
+
                 if (game.title == "Breizh Quiz") {
                     val intent = Intent(context, QuizActivity::class.java)
                     context.startActivity(intent)
@@ -90,10 +93,21 @@ fun GameCard(game: GameItem) {
                     val intent = Intent(context, CatchMeGame::class.java)
                     context.startActivity(intent)
                 }
-                if (game.title == "Shake It") {
+                if (game.title == "Shake it") {
                     val intent = Intent(context, ShakeItGame::class.java)
                     context.startActivity(intent)
                 }
+
+                if (game.title == "Boat Game") {
+                    val intent = Intent(context, BoatGameActivity::class.java)
+                    context.startActivity(intent)
+                }
+
+                if (game.title == "Logo Quiz") {
+                    val intent = Intent(context, LogoQuizActivity::class.java)
+                    context.startActivity(intent)
+                }
+
             },
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
@@ -109,8 +123,11 @@ fun GameCard(game: GameItem) {
                 text = game.title,
                 color = when (game.title) {
                     "Breizh Quiz" -> Color.Red
-                    "Solo Pong" -> Color.White
-                    else -> Color.Gray
+                    "Solo Pong" -> Color.Yellow
+                    "Catch Me (if you can)" -> Color.Blue
+                    "Shake it" -> Color.Red
+                    "Boat Game" -> Color.Blue
+                    else -> Color.Black
                 },
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,

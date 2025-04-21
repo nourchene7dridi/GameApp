@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.CatchMe
+package com.example.gameapp.SOLO.Entrainement.CatchMe
 
 import android.annotation.SuppressLint
 import android.graphics.Color

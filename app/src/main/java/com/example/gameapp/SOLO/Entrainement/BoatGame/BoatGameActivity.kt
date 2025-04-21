@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.BoatGame
+package com.example.gameapp.SOLO.Entrainement.BoatGame
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

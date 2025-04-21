@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.BreishQuiz
+package com.example.gameapp.SOLO.Entrainement.BreishQuiz
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

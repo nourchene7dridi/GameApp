@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.LogoQuiz
+package com.example.gameapp.SOLO.Entrainement.LogoQuiz
 
 import android.media.MediaPlayer
 import android.os.Bundle

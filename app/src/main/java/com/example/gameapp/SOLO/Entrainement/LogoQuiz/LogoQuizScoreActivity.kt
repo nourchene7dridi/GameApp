@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.LogoQuiz
+package com.example.gameapp.SOLO.Entrainement.LogoQuiz
 
 import android.os.Bundle
 import android.widget.TextView

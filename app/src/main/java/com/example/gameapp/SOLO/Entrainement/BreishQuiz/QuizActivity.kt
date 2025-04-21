@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.BreishQuiz
+package com.example.gameapp.SOLO.Entrainement.BreishQuiz
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import com.example.gameapp.SOLO.GameListActivity
 import com.example.gameapp.ui.theme.GameAppTheme
-import com.example.gameapp.SOLO.BreishQuiz.QuizScreen
+import com.example.gameapp.SOLO.Entrainement.BreishQuiz.QuizScreen
 
 
 class QuizActivity : ComponentActivity() {

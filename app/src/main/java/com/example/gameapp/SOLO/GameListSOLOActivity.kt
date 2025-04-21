@@ -1,5 +1,6 @@
 package com.example.gameapp.SOLO
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,24 +13,18 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.gameapp.ui.theme.GameAppTheme
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
-import android.content.Intent
-import androidx.compose.ui.platform.LocalContext
 import com.example.gameapp.R
-import com.example.gameapp.SOLO.BoatGame.BoatGameActivity
-import com.example.gameapp.SOLO.BreishQuiz.QuizActivity
-import com.example.gameapp.SOLO.CatchMe.CatchMeGame
+import com.example.gameapp.ui.theme.GameAppTheme
+import com.example.gameapp.SOLO.Entrainement.GamesSoloActivity
 import com.example.gameapp.SOLO.DefisAleatoires.TroisDefisAleatoiresActivity
-import com.example.gameapp.SOLO.LogoQuiz.LogoQuizActivity
-import com.example.gameapp.SOLO.ShakeIt.ShakeItGame
-
 
 class GameListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,24 +43,45 @@ data class GameItem(val title: String, val imageResId: Int)
 
 @Composable
 fun GameListScreen() {
+    val context = LocalContext.current
     val games = listOf(
         GameItem("3 Défis aléatoires", R.drawable.jeu),
-        GameItem("Catch Me (if you can)", R.drawable.classroom),
-        GameItem("Breizh Quiz", R.drawable.breizh),
-        GameItem("Solo Pong", R.drawable.ping_solo),
-        GameItem("Shake it", R.drawable.shaker1),
-        GameItem("Boat Game", R.drawable.riviere),
-        GameItem("Logo Quiz", R.drawable.logo)
+        GameItem("Mode entraînement", R.drawable.entrainement),
     )
 
-    LazyColumn(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        items(games.size) { index ->
-            GameCard(game = games[index])
+        Spacer(modifier = Modifier.height(30.dp))
+
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            games.forEach { game ->
+                GameCard(game = game)
+            }
+        }
+
+        // Bouton pour revenir au menu principal
+        Button(
+            onClick = {
+                (context as? ComponentActivity)?.finish() // Ferme cette activité et revient à l'écran précédent
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF6200EE),
+                contentColor = Color.White
+        ) ){
+            Text("Revenir au menu")
         }
     }
 }
@@ -74,44 +90,21 @@ fun GameListScreen() {
 fun GameCard(game: GameItem) {
     val context = LocalContext.current
 
-
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(180.dp)
             .clickable {
-                if (game.title == "3 Défis aléatoires") {
-                    val intent = Intent(context, TroisDefisAleatoiresActivity::class.java)
-                    context.startActivity(intent)
+                when (game.title) {
+                    "3 Défis aléatoires" -> {
+                        val intent = Intent(context, TroisDefisAleatoiresActivity::class.java)
+                        context.startActivity(intent)
+                    }
+                    "Mode entraînement" -> {
+                        val intent = Intent(context, GamesSoloActivity::class.java)
+                        context.startActivity(intent)
+                    }
                 }
-
-                if (game.title == "Breizh Quiz") {
-                    val intent = Intent(context, QuizActivity::class.java)
-                    context.startActivity(intent)
-                }
-                if (game.title == "Solo Pong") {
-                    val intent = Intent(context, com.example.gameapp.SOLO.Pong.PongGameActivity::class.java)
-                    context.startActivity(intent)
-                }
-                if (game.title == "Catch Me (if you can)") {
-                    val intent = Intent(context, CatchMeGame::class.java)
-                    context.startActivity(intent)
-                }
-                if (game.title == "Shake it") {
-                    val intent = Intent(context, ShakeItGame::class.java)
-                    context.startActivity(intent)
-                }
-
-                if (game.title == "Boat Game") {
-                    val intent = Intent(context, BoatGameActivity::class.java)
-                    context.startActivity(intent)
-                }
-
-                if (game.title == "Logo Quiz") {
-                    val intent = Intent(context, LogoQuizActivity::class.java)
-                    context.startActivity(intent)
-                }
-
             },
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
@@ -126,13 +119,10 @@ fun GameCard(game: GameItem) {
             Text(
                 text = game.title,
                 color = when (game.title) {
-                    "Breizh Quiz" -> Color.Red
-                    "Solo Pong" -> Color.Yellow
-                    "Catch Me (if you can)" -> Color.Blue
-                    "Shake it" -> Color.Red
-                    "Boat Game" -> Color.Blue
+                    "3 Défis aléatoires" -> Color.Red
                     else -> Color.Black
                 },
+
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
