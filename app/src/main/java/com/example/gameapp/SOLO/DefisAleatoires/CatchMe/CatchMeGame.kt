@@ -1,6 +1,7 @@
 package com.example.gameapp.SOLO.DefisAleatoires.CatchMe
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.*
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.activity.ComponentActivity
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.example.gameapp.R
+import com.example.gameapp.SOLO.DefisAleatoires.FinDuJeuActivity
 import kotlinx.coroutines.*
 import kotlin.random.Random
 
@@ -77,19 +79,30 @@ class CatchMeGame : ComponentActivity() {
                         }
                     } else {
                         statusText.text = "🏁 Jeu terminé !"
+                        goToFinDuJeu()
                     }
 
                     answerIndex = -1
                 } else {
-                    Toast.makeText(this, "❌ Mauvais objet", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "❌ Mauvais téléphone", Toast.LENGTH_SHORT).show()
                     statusText.text = "❌ Mauvais choix"
                 }
             }
         }
 
-        findViewById<Button>(R.id.playButton).setOnClickListener {
-            currentRound = 1
+        // Démarre automatiquement le jeu sans bouton
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(1000)
             startRound()
+        }
+    }
+
+    private fun goToFinDuJeu() {
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(2000)
+            val intent = Intent(this@CatchMeGame, FinDuJeuActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -114,27 +127,21 @@ class CatchMeGame : ComponentActivity() {
 
     private fun startRound() {
         CoroutineScope(Dispatchers.Main).launch {
-            statusText.text = "🎬 Manche $currentRound : Présentation des objets..."
+            statusText.text = "🎬 Manche $currentRound : Présentation des vibrations des téléphones..."
 
-            // Masquer tous les boutons au début de la manche
             buttons.forEach { it.visibility = View.INVISIBLE }
 
             val patterns = patternsByRound[currentRound - 1]
 
-            // Afficher et vibrer chaque objet (ImageButton)
             for (i in buttons.indices) {
                 highlightButton(i, true)
                 vibratePattern(patterns[i])
-
-                // Rendre visible l'image qui vibre
                 buttons[i].visibility = View.VISIBLE
-
                 delay(1000)
                 highlightButton(i, false)
                 delay(300)
             }
 
-            // Compte à rebours avant de commencer la sélection
             for (i in 3 downTo 1) {
                 statusText.text = "$i..."
                 delay(1000)
@@ -143,10 +150,9 @@ class CatchMeGame : ComponentActivity() {
             statusText.text = "Écoute bien..."
             delay(1000)
 
-            // Sélectionner un élève au hasard et faire vibrer son téléphone
             answerIndex = Random.nextInt(4)
             vibratePattern(patterns[answerIndex])
-            statusText.text = "Quel objet était-ce ?"
+            statusText.text = "Quel téléphone était-ce ?"
         }
     }
 }

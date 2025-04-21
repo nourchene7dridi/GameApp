@@ -49,18 +49,18 @@ fun ScoreScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(48.dp))
+        // Spacer(modifier = Modifier.height(48.dp))
 
         // Bouton Rejouer
-        Button(
+        /*Button(
             onClick = onReplay,
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE))
         ) {
             Text("Rejouer", color = Color.White)
-        }
+        }*/
 
-        Spacer(modifier = Modifier.height(12.dp))
+        /*Spacer(modifier = Modifier.height(12.dp))
 
         // Bouton Retour
         Button(
@@ -69,6 +69,6 @@ fun ScoreScreen(
             colors = ButtonDefaults.buttonColors(containerColor = Color.DarkGray)
         ) {
             Text("Retour au menu", color = Color.White)
-        }
+        }*/
     }
 }

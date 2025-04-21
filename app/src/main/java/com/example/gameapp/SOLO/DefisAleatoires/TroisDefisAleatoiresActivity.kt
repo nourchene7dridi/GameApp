@@ -6,13 +6,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gameapp.R
 
-//  du package DefisAleatoires
-import com.example.gameapp.SOLO.DefisAleatoires.BoatGame.BoatGameActivity
-import com.example.gameapp.SOLO.DefisAleatoires.CatchMe.CatchMeGame
-import com.example.gameapp.SOLO.DefisAleatoires.BreishQuiz.QuizActivity
-import com.example.gameapp.SOLO.DefisAleatoires.Pong.PongGameActivity
-import com.example.gameapp.SOLO.DefisAleatoires.LogoQuiz.LogoQuizActivity
-import com.example.gameapp.SOLO.DefisAleatoires.ShakeIt.ShakeItGame
+import com.example.gameapp.SOLO.Entrainement.BoatGame.BoatGameActivity
+import com.example.gameapp.SOLO.Entrainement.CatchMe.CatchMeGame
+import com.example.gameapp.SOLO.Entrainement.BreishQuiz.QuizActivity
+import com.example.gameapp.SOLO.Entrainement.Pong.PongGameActivity
+import com.example.gameapp.SOLO.Entrainement.LogoQuiz.LogoQuizActivity
+import com.example.gameapp.SOLO.Entrainement.ShakeIt.ShakeItGame
 
 class TroisDefisAleatoiresActivity : AppCompatActivity() {
 

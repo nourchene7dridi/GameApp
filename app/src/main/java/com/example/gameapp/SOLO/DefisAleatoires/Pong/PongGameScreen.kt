@@ -26,6 +26,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.gameapp.R
 import kotlinx.coroutines.delay
+import android.content.Intent
+import androidx.activity.ComponentActivity
+import com.example.gameapp.SOLO.DefisAleatoires.FinDuJeuActivity
+
+
 
 // ─── VIBRATION ────────────────────────────────────────────────────────────────
 fun vibrate(context: Context, duration: Long = 50) {
@@ -85,37 +90,15 @@ fun PongGameScreen(
         var gameOver by remember { mutableStateOf(false) }
 
         // ─── Boucle de jeu ──────────────────────────────────
-        LaunchedEffect(Unit) {
-            while(true) {
-                if(!gameOver) {
-                    ballX += dx; ballY += dy
-                    // rebonds murs
-                    if(ballX-ballRadius<=0 || ballX+ballRadius>=w) dx=-dx
-                    if(ballY-ballRadius<=0) dy=-dy
-                    // rebond raquette
-                    val tol = w*.0005f
-                    val collided =
-                        ballY+ballRadius>=paddleY &&
-                                ballY-ballRadius<=paddleY+paddleH &&
-                                ballX+ballRadius>=paddleX-tol &&
-                                ballX-ballRadius<=paddleX+paddleW+tol
-                    if(collided) {
-                        dy = -dy
-                        ballY = paddleY - ballRadius
-                        score += 1
-                        vibrate(context)
-                    }
-                    // rater la balle
-                    if(ballY-ballRadius>h) {
-                        lives--
-                        playBadSound(context)
-                        if(lives<=0) gameOver=true
-                        else {
-                            ballX = w/2; ballY = h/2
-                        }
-                    }
+
+        // Lancer FinDuJeuActivity 3 secondes après le Game Over
+        LaunchedEffect(gameOver) {
+            if (gameOver) {
+                delay(3000L)
+                context.startActivity(Intent(context, FinDuJeuActivity::class.java))
+                if (context is ComponentActivity) {
+                    context.finish()
                 }
-                delay(16L)
             }
         }
 
@@ -159,16 +142,9 @@ fun PongGameScreen(
                     Spacer(Modifier.height(16.dp))
                     Text("Score final: $score",
                         style=TextStyle(Color.White,fontSize=24.sp))
-                    Spacer(Modifier.height(24.dp))
-                    Button(onClick=onReplay) {
-                        Text("Rejouer")
-                    }
-                    Spacer(Modifier.height(8.dp))
-                    Button(onClick=onReturnToMenu) {
-                        Text("Retour")
-                    }
                 }
             }
+
         }
     }
 }

@@ -10,6 +10,10 @@ import android.media.MediaPlayer
 import android.view.View
 import com.example.gameapp.R
 import kotlin.random.Random
+import android.content.Intent
+import android.os.Handler
+import android.os.Looper
+import com.example.gameapp.SOLO.DefisAleatoires.FinDuJeuActivity
 
 data class Obstacle(var x: Float, var y: Float, val width: Float, val height: Float, val bitmap: Bitmap)
 
@@ -34,6 +38,8 @@ class BoatGameView(context: Context) : View(context), SensorEventListener {
     private var gameOver = false
     private var gameOverSound: MediaPlayer? = null
     private var gameOverPlayed = false
+
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     init {
         post {
@@ -129,6 +135,12 @@ class BoatGameView(context: Context) : View(context), SensorEventListener {
             gameOverPlayed = true
             gameOverSound = MediaPlayer.create(context, R.raw.mauvaise_reponse)
             gameOverSound?.start()
+
+            // lancement de FinDuJeuActivity après 2 secondes
+            mainHandler.postDelayed({
+                val intent = Intent(context, FinDuJeuActivity::class.java)
+                context.startActivity(intent)
+            }, 2000)
         }
     }
 

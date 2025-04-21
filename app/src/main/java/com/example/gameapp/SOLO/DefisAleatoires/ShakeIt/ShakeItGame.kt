@@ -14,6 +14,9 @@ import androidx.activity.ComponentActivity
 import com.bumptech.glide.Glide
 import com.example.gameapp.R
 import kotlin.math.sqrt
+import android.content.Intent
+import com.example.gameapp.SOLO.DefisAleatoires.FinDuJeuActivity
+
 
 class ShakeItGame : ComponentActivity(), SensorEventListener {
 
@@ -76,11 +79,19 @@ class ShakeItGame : ComponentActivity(), SensorEventListener {
                 mediaPlayerDing = MediaPlayer.create(this@ShakeItGame, R.raw.fin)
                 mediaPlayerDing?.start()
 
+                // Une fois le son terminé → rediriger vers FinDuJeuActivity
                 mediaPlayerDing?.setOnCompletionListener {
                     mediaPlayerDing?.release()
                     mediaPlayerDing = null
+
+                    // Rediriger vers l'écran de fin
+                    val intent = Intent(this@ShakeItGame, FinDuJeuActivity::class.java)
+                    intent.putExtra("SCORE_FINAL", shakeScore)
+                    startActivity(intent)
+                    finish()
                 }
             }
+
         }.start()
     }
 

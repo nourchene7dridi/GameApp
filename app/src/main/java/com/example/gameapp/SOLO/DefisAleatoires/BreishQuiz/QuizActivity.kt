@@ -10,6 +10,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import com.example.gameapp.SOLO.GameListActivity
 import com.example.gameapp.ui.theme.GameAppTheme
+import com.example.gameapp.SOLO.DefisAleatoires.FinDuJeuActivity
+import kotlinx.coroutines.*
+
 
 
 class QuizActivity : ComponentActivity() {
@@ -26,22 +29,24 @@ class QuizActivity : ComponentActivity() {
 
                 Surface(modifier = Modifier.fillMaxSize()) {
                     if (isQuizFinished) {
+                        // Faut lancer FinDuJeuActivity automatiquement après 3 secondes
+                        LaunchedEffect(Unit) {
+                            delay(3000)
+                            val intent = Intent(this@QuizActivity, FinDuJeuActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+
                         ScoreScreen(
                             score = finalScore,
                             total = questions.size,
-                            onReplay = {
-                                // On remet le score à 0
-                                finalScore = 0
-                                questions = BreizhQuestions().breizhQuestions
-                                isQuizFinished = false
-                            },
-                            onReturnToMenu = {
-                                val intent = Intent(this@QuizActivity, GameListActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
+                            onReplay = {}, //  inutile maintenant
+                            onReturnToMenu = {} //  inutile aussi
                         )
-                    } else {
+                    }
+
+
+                 else {
                         QuizScreen(
                             questions = questions,
                             onQuizFinished = { score ->
