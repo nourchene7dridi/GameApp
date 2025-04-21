@@ -1,4 +1,4 @@
-package com.example.gameapp.SOLO.Entrainement.BreishQuiz
+package com.example.gameapp.SOLO.DefisAleatoires.BreishQuiz
 
 import android.content.Intent
 import android.os.Bundle

@@ -5,12 +5,14 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gameapp.R
-import com.example.gameapp.SOLO.Entrainement.BoatGame.BoatGameActivity
-import com.example.gameapp.SOLO.Entrainement.BreishQuiz.QuizActivity
-import com.example.gameapp.SOLO.Entrainement.CatchMe.CatchMeGame
-import com.example.gameapp.SOLO.Entrainement.LogoQuiz.LogoQuizActivity
-import com.example.gameapp.SOLO.Entrainement.Pong.PongGameActivity
-import com.example.gameapp.SOLO.Entrainement.ShakeIt.ShakeItGame
+
+//  du package DefisAleatoires
+import com.example.gameapp.SOLO.DefisAleatoires.BoatGame.BoatGameActivity
+import com.example.gameapp.SOLO.DefisAleatoires.CatchMe.CatchMeGame
+import com.example.gameapp.SOLO.DefisAleatoires.BreishQuiz.QuizActivity
+import com.example.gameapp.SOLO.DefisAleatoires.Pong.PongGameActivity
+import com.example.gameapp.SOLO.DefisAleatoires.LogoQuiz.LogoQuizActivity
+import com.example.gameapp.SOLO.DefisAleatoires.ShakeIt.ShakeItGame
 
 class TroisDefisAleatoiresActivity : AppCompatActivity() {
 
@@ -46,11 +48,11 @@ class TroisDefisAleatoiresActivity : AppCompatActivity() {
     }
 
     private fun playEndMusic() {
-        mediaPlayer = MediaPlayer.create(this, R.raw.fin)  // ← ton fichier de fin ici
+        mediaPlayer = MediaPlayer.create(this, R.raw.fin)
         mediaPlayer?.start()
         mediaPlayer?.setOnCompletionListener {
             mediaPlayer?.release()
-            finish()  // ← ou affiche un écran "Bravo"
+            finish()
         }
     }
 

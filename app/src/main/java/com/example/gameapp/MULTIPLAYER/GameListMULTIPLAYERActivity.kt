@@ -26,7 +26,6 @@ import com.example.gameapp.R
 import com.example.gameapp.SOLO.Entrainement.BreishQuiz.QuizActivity
 import com.example.gameapp.SOLO.Entrainement.CatchMe.CatchMeGame
 import com.example.gameapp.MULTIPLAYER.ShakeIt.ShakeItGame
-import com.example.gameapp.SOLO.Entrainement.Pong.PongGameActivity
 
 
 class GameListActivity2 : ComponentActivity() {
@@ -83,7 +82,7 @@ fun GameCard(game: GameItem) {
                     context.startActivity(intent)
                 }
                 if (game.title == "Solo Pong") {
-                    val intent = Intent(context, PongGameActivity::class.java)
+                    val intent = Intent(context, com.example.gameapp.SOLO.Entrainement.Pong.PongGameActivity::class.java)
                     context.startActivity(intent)
                 }
                 if (game.title == "Catch Me (if you can)") {

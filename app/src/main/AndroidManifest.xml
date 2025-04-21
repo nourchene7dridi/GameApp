@@ -62,6 +62,31 @@
 
 
         <activity
+            android:name=".SOLO.DefisAleatoires.BreishQuiz.QuizActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SOLO.DefisAleatoires.CatchMe.CatchMeGame"
+            android:exported="false" />
+        <activity
+            android:name=".SOLO.DefisAleatoires.ShakeIt.ShakeItGame"
+            android:exported="false" />
+
+        <activity
+            android:name=".SOLO.DefisAleatoires.BoatGame.BoatGameActivity"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
+
+        <activity
+            android:name=".SOLO.DefisAleatoires.Pong.PongGameActivity"
+            android:exported="true" />
+
+
+        <activity android:name=".SOLO.DefisAleatoires.LogoQuiz.LogoQuizActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".SOLO.DefisAleatoires.LogoQuiz.LogoQuizScoreActivity" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

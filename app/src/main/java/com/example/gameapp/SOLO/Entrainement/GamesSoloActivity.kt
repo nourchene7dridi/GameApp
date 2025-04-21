@@ -26,7 +26,6 @@ import com.example.gameapp.R
 import com.example.gameapp.SOLO.Entrainement.BoatGame.BoatGameActivity
 import com.example.gameapp.SOLO.Entrainement.BreishQuiz.QuizActivity
 import com.example.gameapp.SOLO.Entrainement.CatchMe.CatchMeGame
-import com.example.gameapp.SOLO.DefisAleatoires.TroisDefisAleatoiresActivity
 import com.example.gameapp.SOLO.Entrainement.LogoQuiz.LogoQuizActivity
 import com.example.gameapp.SOLO.Entrainement.Pong.PongGameActivity
 import com.example.gameapp.SOLO.Entrainement.ShakeIt.ShakeItGame
