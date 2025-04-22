@@ -23,7 +23,7 @@ class LogoQuizActivity : AppCompatActivity() {
         Pair(R.drawable.logo1, "Shell"),
         Pair(R.drawable.logo2, "Nissan"),
         Pair(R.drawable.logo3, "Paypal"),
-        Pair(R.drawable.logo4, "La Coste")
+        Pair(R.drawable.logo4, "Lacoste")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

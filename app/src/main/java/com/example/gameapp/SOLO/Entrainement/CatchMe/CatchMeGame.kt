@@ -114,7 +114,7 @@ class CatchMeGame : ComponentActivity() {
 
     private fun startRound() {
         CoroutineScope(Dispatchers.Main).launch {
-            statusText.text = "🎬 Manche $currentRound : Présentation des objets..."
+            statusText.text = "🎬 Manche $currentRound : Vibration des téléphones..."
 
             // Masquer tous les boutons au début de la manche
             buttons.forEach { it.visibility = View.INVISIBLE }
@@ -146,7 +146,7 @@ class CatchMeGame : ComponentActivity() {
             // Sélectionner un élève au hasard et faire vibrer son téléphone
             answerIndex = Random.nextInt(4)
             vibratePattern(patterns[answerIndex])
-            statusText.text = "Quel objet était-ce ?"
+            statusText.text = "Qui oublié d'éteindre son téléphone ?"
         }
     }
 }
